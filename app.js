@@ -2,8 +2,17 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
+
+// mongoose.connect(`mongodb://jesse:${process.env.MONGO_ATLAS_PW}@cluster0-shard-00-00-maxbz.mongodb.net:27017,cluster0-shard-00-01-maxbz.mongodb.net:27017,cluster0-shard-00-02-maxbz.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin`, {
+//     useMongoClient: true
+// });
+
+mongoose.connect(`mongodb+srv://test:${process.env.MONGO_ATLAS_PW}@cluster0-maxbz.mongodb.net/test`, {
+    useMongoClient: true
+});
 
 // app.use((req, res, next) => {
 //     res.status(200).json({
